@@ -59,6 +59,7 @@
     "@types/dompurify": "^3.2.0",
     "@wagmi/connectors": "^5.11.2",
     "add": "^2.0.6",
+    "accounts": "~0.8.1",
     "assert": "^2.1.0",
     "browserify-zlib": "^0.2.0",
     "class-variance-authority": "^0.7.1",
