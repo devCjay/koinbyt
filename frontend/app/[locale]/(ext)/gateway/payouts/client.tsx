@@ -29,7 +29,6 @@ import { Link } from "@/i18n/routing";
 import $fetch from "@/lib/api";
 import { useMerchantMode } from "../context/merchant-mode";
 import { useTranslations } from "next-intl";
-import { useAddonDisplayName } from "@/hooks/use-addon-display-name";
 import { PayoutHero } from "./components/payout-hero";
 
 interface Balance {
@@ -79,11 +78,10 @@ export default function PayoutsClient() {
   const t = useTranslations("ext_gateway");
   const tCommon = useTranslations("common");
   const { mode } = useMerchantMode();
-  const { getWalletTypeLabel } = useAddonDisplayName();
 
   const WALLET_CONFIG: Record<string, { label: string; icon: any; color: string }> = {
     ...DEFAULT_WALLET_CONFIG,
-    ECO: { ...DEFAULT_WALLET_CONFIG.ECO, label: getWalletTypeLabel("ECO", "Ecosystem") },
+    ECO: { ...DEFAULT_WALLET_CONFIG.ECO, label: "Ecosystem" },
   };
   const [loading, setLoading] = useState(true);
   const [balances, setBalances] = useState<Balance[]>([]);

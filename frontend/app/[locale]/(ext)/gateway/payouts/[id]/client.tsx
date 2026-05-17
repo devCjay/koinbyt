@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
@@ -27,7 +26,6 @@ import {
   Receipt,
   RefreshCcw,
   TrendingUp,
-  Wallet,
   XCircle,
   AlertCircle,
 } from "lucide-react";
@@ -35,7 +33,6 @@ import { Link } from "@/i18n/routing";
 import $fetch from "@/lib/api";
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
-import { useAddonDisplayName } from "@/hooks/use-addon-display-name";
 
 interface PayoutPayment {
   id: string;
@@ -91,12 +88,11 @@ export default function PayoutDetailClient() {
   const tCommon = useTranslations("common");
   const params = useParams();
   const payoutId = params.id as string;
-  const { getWalletTypeLabel } = useAddonDisplayName();
 
   const WALLET_CONFIG: Record<string, { label: string; icon: any; color: string }> = {
     FIAT: { ...DEFAULT_WALLET_CONFIG.FIAT },
     SPOT: { ...DEFAULT_WALLET_CONFIG.SPOT },
-    ECO: { ...DEFAULT_WALLET_CONFIG.ECO, label: getWalletTypeLabel("ECO", "Ecosystem") + " Wallet" },
+    ECO: { ...DEFAULT_WALLET_CONFIG.ECO, label: "Ecosystem Wallet" },
   };
 
   const [loading, setLoading] = useState(true);
